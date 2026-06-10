@@ -102,7 +102,7 @@ export function RestorationHistory({
         {items.map((r, idx) => {
           const restoredUrl = r.restored_url ? signedUrls[r.restored_url] : null;
           const originalUrl = signedUrls[r.original_url];
-          const isFirst = idx === 0;
+          const isAboveFold = idx < 3;
 
           return (
             <div
@@ -117,7 +117,8 @@ export function RestorationHistory({
                       alt="Original"
                       fill
                       unoptimized
-                      priority={isFirst}
+                      priority={isAboveFold}
+                      loading={isAboveFold ? "eager" : "lazy"}
                       className="object-cover"
                       sizes="150px"
                     />
@@ -137,7 +138,8 @@ export function RestorationHistory({
                       alt="Restaurada"
                       fill
                       unoptimized
-                      priority={isFirst}
+                      priority={isAboveFold}
+                      loading={isAboveFold ? "eager" : "lazy"}
                       className="object-cover"
                       sizes="150px"
                     />
