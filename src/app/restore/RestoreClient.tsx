@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 const DEMOS = [
   { originalUrl: "/demo/original.jpg",   restoredUrl: "/demo/restaurada.jpg" },
   { originalUrl: "/demo/original_1.jpg", restoredUrl: "/demo/restaurada_1.jpg" },
+  { originalUrl: "/demo/original_2.jpg", restoredUrl: "/demo/restaurada_2.jpg" },
 ];
 
 function DemoCarousel() {
