@@ -28,14 +28,19 @@ export async function POST(request: NextRequest) {
 
   const supabase = createServiceClient();
 
-  // Idempotency: mark event as processed before acting; ignore if already seen
-  const { error: dupError } = await supabase
+  // Idempotency: mark event as processed; bail only on unique_violation (23505)
+  const { error: insertError } = await supabase
     .from("stripe_events")
     .insert({ id: event.id });
 
-  if (dupError) {
-    // Unique constraint violation = already processed — return 200 to stop Stripe retries
-    return NextResponse.json({ received: true });
+  if (insertError) {
+    if (insertError.code === "23505") {
+      // Already processed — return 200 so Stripe stops retrying
+      return NextResponse.json({ received: true });
+    }
+    // Any other error (e.g. table not yet migrated): log and continue so credits
+    // are still added; idempotency degrades gracefully rather than silently drops credits.
+    console.error("[webhook/stripe] stripe_events insert error:", insertError);
   }
 
   if (event.type === "checkout.session.completed") {
