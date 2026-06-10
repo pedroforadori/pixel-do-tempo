@@ -2,15 +2,18 @@ export const dynamic = "force-dynamic";
 
 import Link from "next/link";
 import { SignUpForm } from "@/components/auth/SignUpForm";
-import { Camera } from "lucide-react";
 
 export default function SignUpPage() {
   return (
     <div className="min-h-screen flex">
       <div className="hidden lg:flex lg:w-1/2 bg-slate-900 flex-col justify-between p-12">
-        <Link href="/" className="flex items-center gap-2">
-          <Camera className="h-6 w-6 text-brand" />
-          <span className="text-white font-semibold text-lg">Pixel do Tempo</span>
+        <Link href="/" className="flex items-center gap-2.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-dark.png" alt="" className="h-9 w-auto" />
+          <div className="flex flex-col leading-tight">
+            <span className="text-white font-semibold text-sm">Pixel do Tempo</span>
+            <span className="text-slate-400 text-[10px]">Revivendo momentos com IA</span>
+          </div>
         </Link>
         <div className="space-y-4">
           <p className="text-slate-300 text-xl font-medium">
