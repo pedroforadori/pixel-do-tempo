@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Camera, Mail, Globe } from "lucide-react";
+import { Mail, Globe } from "lucide-react";
 
 export function Footer() {
   return (
@@ -11,9 +11,15 @@ export function Footer() {
 
           {/* Marca */}
           <div className="flex flex-col gap-3">
-            <Link href="/#inicio" className="inline-flex items-center gap-2 font-semibold text-foreground">
-              <Camera className="h-4 w-4 text-brand-dark" />
-              Pixel do Tempo
+            <Link href="/#inicio" className="inline-flex items-center gap-2.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-light.png" alt="" className="h-8 w-auto dark:hidden" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-dark.png" alt="" className="h-8 w-auto hidden dark:block" />
+              <div className="flex flex-col leading-tight">
+                <span className="font-semibold text-sm text-foreground">Pixel do Tempo</span>
+                <span className="text-[10px] text-muted-foreground">Revivendo momentos com IA</span>
+              </div>
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Restauração de fotografias antigas com inteligência artificial. Devolvemos

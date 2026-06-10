@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Camera, LayoutDashboard, Sparkles } from "lucide-react";
+import { LayoutDashboard, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -36,9 +36,15 @@ export async function Navbar() {
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/#inicio" className="flex items-center gap-2 font-semibold">
-          <Camera className="h-5 w-5 text-brand-dark" />
-          <span className="hidden sm:inline text-foreground">Pixel do Tempo</span>
+        <Link href="/#inicio" className="flex items-center gap-2.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-light.png" alt="" className="h-9 w-auto dark:hidden" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-dark.png" alt="" className="h-9 w-auto hidden dark:block" />
+          <div className="flex flex-col leading-tight">
+            <span className="font-semibold text-sm text-foreground">Pixel do Tempo</span>
+            <span className="text-[10px] text-muted-foreground hidden sm:block">Revivendo momentos com IA</span>
+          </div>
         </Link>
 
         {/* Nav links — âncoras */}
