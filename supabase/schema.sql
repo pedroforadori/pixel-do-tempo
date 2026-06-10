@@ -38,6 +38,12 @@ CREATE TABLE IF NOT EXISTS public.restorations (
   created_at   TIMESTAMPTZ DEFAULT NOW() NOT NULL
 );
 
+-- stripe_events: idempotência de webhooks — impede crédito duplicado em retentativas
+CREATE TABLE IF NOT EXISTS public.stripe_events (
+  id           TEXT PRIMARY KEY,
+  processed_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
+);
+
 -- coupons: códigos promocionais de uso único
 CREATE TABLE IF NOT EXISTS public.coupons (
   id             UUID PRIMARY KEY DEFAULT uuid_generate_v4(),

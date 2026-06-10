@@ -143,14 +143,16 @@ export async function POST(request: NextRequest) {
 
     if (restoredUploadError) throw restoredUploadError;
 
-    // ── Signed URLs para retornar ao client (1 hora) ──────────────────────
-    const { data: resultSigned } = await adminStorage
-      .from("restorations")
-      .createSignedUrl(restoredPath, 3600);
+    // ── Signed URLs para retornar ao client (1 hora) — em paralelo ───────
+    const [{ data: resultSigned, error: resultSignedError }, { data: originalSigned, error: originalSignedError }] =
+      await Promise.all([
+        adminStorage.from("restorations").createSignedUrl(restoredPath, 3600),
+        adminStorage.from("restorations").createSignedUrl(storagePath, 3600),
+      ]);
 
-    const { data: originalSigned } = await adminStorage
-      .from("restorations")
-      .createSignedUrl(storagePath, 3600);
+    if (resultSignedError || !resultSigned?.signedUrl || originalSignedError || !originalSigned?.signedUrl) {
+      throw resultSignedError ?? originalSignedError ?? new Error("signed_url_failed");
+    }
 
     // ── Atualizar status (usa JWT do usuário) ─────────────────────────────
     if (restorationId) {
@@ -161,8 +163,8 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({
-      restoredUrl: resultSigned?.signedUrl,
-      originalUrl: originalSigned?.signedUrl,
+      restoredUrl: resultSigned.signedUrl,
+      originalUrl: originalSigned.signedUrl,
       restorationId,
     });
   } catch (error) {

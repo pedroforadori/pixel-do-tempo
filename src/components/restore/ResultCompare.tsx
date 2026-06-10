@@ -68,7 +68,7 @@ export function ResultCompare({
   return (
     <div className="space-y-4">
       <div className="overflow-hidden rounded-xl border shadow-sm">
-        <div className="relative">
+        <div className="relative w-full" style={{ height: "460px" }}>
           <ReactCompareSlider
             itemOne={
               <ReactCompareSliderImage
@@ -107,8 +107,6 @@ export function ResultCompare({
                 {withWatermark && <WatermarkOverlay />}
               </div>
             }
-            style={{ height: "460px" }}
-            className="w-full"
           />
         </div>
 

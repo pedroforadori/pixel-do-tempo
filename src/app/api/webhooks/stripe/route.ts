@@ -26,6 +26,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_signature" }, { status: 400 });
   }
 
+  const supabase = createServiceClient();
+
+  // Idempotency: mark event as processed before acting; ignore if already seen
+  const { error: dupError } = await supabase
+    .from("stripe_events")
+    .insert({ id: event.id });
+
+  if (dupError) {
+    // Unique constraint violation = already processed — return 200 to stop Stripe retries
+    return NextResponse.json({ received: true });
+  }
+
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const userId = session.metadata?.user_id;
@@ -36,7 +48,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "missing_metadata" }, { status: 422 });
     }
 
-    const supabase = createServiceClient();
     const { error } = await supabase.rpc("add_credits", {
       p_user_id: userId,
       p_amount: creditsAmount,

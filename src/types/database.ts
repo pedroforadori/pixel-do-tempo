@@ -110,6 +110,20 @@ export type Database = {
         };
         Relationships: [];
       };
+      stripe_events: {
+        Row: {
+          id: string;
+          processed_at: string;
+        };
+        Insert: {
+          id: string;
+          processed_at?: string;
+        };
+        Update: {
+          processed_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
@@ -137,3 +151,4 @@ export type Profile = Database["public"]["Tables"]["profiles"]["Row"];
 export type Credits = Database["public"]["Tables"]["credits"]["Row"];
 export type Restoration = Database["public"]["Tables"]["restorations"]["Row"];
 export type Coupon = Database["public"]["Tables"]["coupons"]["Row"];
+export type StripeEvent = Database["public"]["Tables"]["stripe_events"]["Row"];
