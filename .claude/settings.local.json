@@ -1,7 +1,37 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias \"@/*\" --no-git --yes)"
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias \"@/*\" --no-git --yes)",
+      "Bash(npx shadcn@latest init --defaults)",
+      "Bash(npx shadcn@latest add card dialog badge progress separator avatar input label sheet tabs --yes)",
+      "Bash(npx shadcn@latest add dropdown-menu toast sonner --yes)",
+      "Bash(npx shadcn@latest add dropdown-menu sonner --yes)",
+      "Bash(npm install *)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\auth\\\\login\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\auth\\\\signup\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\auth\\\\callback\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\components\\\\auth\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\components\\\\layout\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\components\\\\landing\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\components\\\\restore\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\components\\\\dashboard\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\components\\\\pricing\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\hooks\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\restore\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\dashboard\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\pricing\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\api\\\\restore\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\api\\\\webhooks\\\\stripe\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\www\\\\app-pixel-do-tempo\\\\src\\\\app\\\\api\\\\redeem\")",
+      "Bash(Write-Output \"All directories created\")",
+      "Bash(xargs sed -i -e 's/bg-\\\\[var\\(--brand-dark\\)\\\\]\\\\/90/bg-brand-dark\\\\/90/g' -e 's/bg-\\\\[var\\(--brand-dark\\)\\\\]\\\\/80/bg-brand-dark\\\\/80/g' -e 's/bg-\\\\[var\\(--brand-dark\\)\\\\]/bg-brand-dark/g' -e 's/hover:bg-\\\\[var\\(--brand-dark\\)\\\\]\\\\/90/hover:bg-brand-dark\\\\/90/g' -e 's/hover:bg-\\\\[var\\(--brand-dark\\)\\\\]/hover:bg-brand-dark/g' -e 's/text-\\\\[var\\(--brand-dark\\)\\\\]/text-brand-dark/g' -e 's/border-\\\\[var\\(--brand-dark\\)\\\\]/border-brand-dark/g' -e 's/ring-\\\\[var\\(--brand-dark\\)\\\\]/ring-brand-dark/g' -e 's/hover:border-\\\\[var\\(--brand-dark\\)\\\\]/hover:border-brand-dark/g' -e 's/bg-\\\\[var\\(--brand\\)\\\\]/bg-brand/g' -e 's/text-\\\\[var\\(--brand\\)\\\\]/text-brand/g' -e 's/hover:bg-\\\\[var\\(--brand\\)\\\\]/hover:bg-brand/g')",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@supabase/supabase-js/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@supabase/ssr/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@base-ui/react/package.json'\\).version\\)\")",
+      "Bash(npm run *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@supabase/storage-js/package.json'\\).version\\)\")"
     ]
   }
 }
