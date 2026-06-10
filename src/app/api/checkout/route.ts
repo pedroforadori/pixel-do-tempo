@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_body" }, { status: 400 });
   }
 
-  const pack = CREDIT_PACKS.find((p) => p.priceId === body.priceId);
+  const pack = CREDIT_PACKS.find((p) => p.priceId && p.priceId === body.priceId);
   if (!pack) {
     return NextResponse.json({ error: "invalid_price" }, { status: 400 });
   }
@@ -37,6 +37,10 @@ export async function POST(request: NextRequest) {
     cancel_url: `${appUrl}/pricing?checkout=cancelled`,
     customer_email: user.email,
   });
+
+  if (!session.url) {
+    return NextResponse.json({ error: "checkout_url_unavailable" }, { status: 502 });
+  }
 
   return NextResponse.json({ url: session.url });
 }

@@ -59,17 +59,24 @@ export function RestorationHistory({
     });
   }
 
+  const [loadError, setLoadError] = useState<string | null>(null);
+
   async function loadMore() {
     setLoading(true);
-    const cursor = items[items.length - 1].created_at;
-    const res = await fetch(`/api/restorations?cursor=${encodeURIComponent(cursor)}&limit=9`);
-    if (res.ok) {
+    setLoadError(null);
+    try {
+      const cursor = items[items.length - 1].created_at;
+      const res = await fetch(`/api/restorations?cursor=${encodeURIComponent(cursor)}&limit=9`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const { items: newItems, signedUrls: newUrls, hasMore: more } = await res.json();
       setItems((prev) => [...prev, ...newItems]);
       setSignedUrls((prev) => ({ ...prev, ...newUrls }));
       setHasMore(more);
+    } catch {
+      setLoadError("Não foi possível carregar mais restaurações. Tente novamente.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   if (items.length === 0) {
@@ -181,6 +188,10 @@ export function RestorationHistory({
           );
         })}
       </div>
+
+      {loadError && (
+        <p className="text-center text-sm text-destructive">{loadError}</p>
+      )}
 
       {hasMore && (
         <div className="flex justify-center">

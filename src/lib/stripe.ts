@@ -14,16 +14,10 @@ export function getStripe(): Stripe {
   return stripeInstance;
 }
 
-function requireEnv(name: string): string {
-  const value = process.env[name];
-  if (!value) throw new Error(`Missing required environment variable: ${name}`);
-  return value;
-}
-
 export const CREDIT_PACKS = [
   {
     credits: 5,
-    priceId: requireEnv("STRIPE_PRICE_5_CREDITS"),
+    priceId: process.env.STRIPE_PRICE_5_CREDITS ?? "",
     label: "Mini",
     price: "R$ 5,90",
     pricePerCredit: "R$ 1,18",
@@ -32,7 +26,7 @@ export const CREDIT_PACKS = [
   },
   {
     credits: 10,
-    priceId: requireEnv("STRIPE_PRICE_10_CREDITS"),
+    priceId: process.env.STRIPE_PRICE_10_CREDITS ?? "",
     label: "Starter",
     price: "R$ 9,90",
     pricePerCredit: "R$ 0,99",
@@ -41,7 +35,7 @@ export const CREDIT_PACKS = [
   },
   {
     credits: 50,
-    priceId: requireEnv("STRIPE_PRICE_50_CREDITS"),
+    priceId: process.env.STRIPE_PRICE_50_CREDITS ?? "",
     label: "Popular",
     price: "R$ 39,90",
     pricePerCredit: "R$ 0,80",
@@ -50,7 +44,7 @@ export const CREDIT_PACKS = [
   },
   {
     credits: 150,
-    priceId: requireEnv("STRIPE_PRICE_150_CREDITS"),
+    priceId: process.env.STRIPE_PRICE_150_CREDITS ?? "",
     label: "Pro",
     price: "R$ 99,90",
     pricePerCredit: "R$ 0,67",

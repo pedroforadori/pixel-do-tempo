@@ -64,6 +64,11 @@ export async function POST(request: NextRequest) {
 
   if (creditError) {
     console.error("[/api/redeem] add_credits error:", creditError);
+    // Best-effort rollback: restore the coupon so the user can try again.
+    await serviceSupabase
+      .from("coupons")
+      .update({ used_by: null, used_at: null, is_active: true })
+      .eq("id", coupon.id);
     return NextResponse.json({ error: "credit_update_failed" }, { status: 500 });
   }
 

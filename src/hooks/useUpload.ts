@@ -31,7 +31,8 @@ export function useUpload() {
 
       try {
         const res = await fetch("/api/restore", { method: "POST", body: form });
-        const data = await res.json();
+        // Parse JSON only after confirming it's available; non-JSON responses (502, proxy HTML) fall back to {}.
+        const data: Record<string, string> = await res.json().catch(() => ({}));
 
         if (!res.ok) {
           if (data.error === "signup_required") {

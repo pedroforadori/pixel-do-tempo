@@ -60,7 +60,8 @@ export async function POST(request: NextRequest) {
     });
 
     if (creditError) {
-      if (creditError.message.includes("insufficient_credits")) {
+      // P0002 is the custom ERRCODE from consume_credits(); also check message as fallback.
+      if (creditError.code === "P0002" || creditError.message?.includes("insufficient_credits")) {
         return NextResponse.json({ error: "insufficient_credits" }, { status: 402 });
       }
       throw creditError;
@@ -68,8 +69,10 @@ export async function POST(request: NextRequest) {
     creditConsumed = true;
 
     // ── Upload original (adminStorage bypassa RLS de storage) ────────────
-    const ext = file.type === "image/png" ? "png" : "jpg";
-    const storagePath = `${userId}/${jobId}-original.${ext}`;
+    // Use the original file's actual extension for the source file.
+    // The restored file is always JPEG (Replicate output_format: "jpg").
+    const originalExt = file.type === "image/png" ? "png" : file.type === "image/webp" ? "webp" : "jpg";
+    const storagePath = `${userId}/${jobId}-original.${originalExt}`;
     const arrayBuffer = await file.arrayBuffer();
     const rawBuffer = Buffer.from(arrayBuffer);
 
@@ -136,10 +139,11 @@ export async function POST(request: NextRequest) {
             .toBuffer()
         : restoredRaw;
 
-    const restoredPath = `${userId}/${jobId}-restored.${ext}`;
+    // Replicate always outputs JPEG regardless of input format.
+    const restoredPath = `${userId}/${jobId}-restored.jpg`;
     const { error: restoredUploadError } = await adminStorage
       .from("restorations")
-      .upload(restoredPath, restoredBuffer, { contentType: file.type, upsert: false });
+      .upload(restoredPath, restoredBuffer, { contentType: "image/jpeg", upsert: false });
 
     if (restoredUploadError) throw restoredUploadError;
 
