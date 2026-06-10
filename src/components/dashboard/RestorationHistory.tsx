@@ -99,9 +99,10 @@ export function RestorationHistory({
   return (
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((r) => {
+        {items.map((r, idx) => {
           const restoredUrl = r.restored_url ? signedUrls[r.restored_url] : null;
           const originalUrl = signedUrls[r.original_url];
+          const isFirst = idx === 0;
 
           return (
             <div
@@ -115,6 +116,8 @@ export function RestorationHistory({
                       src={originalUrl}
                       alt="Original"
                       fill
+                      unoptimized
+                      priority={isFirst}
                       className="object-cover"
                       sizes="150px"
                     />
@@ -133,6 +136,8 @@ export function RestorationHistory({
                       src={restoredUrl}
                       alt="Restaurada"
                       fill
+                      unoptimized
+                      priority={isFirst}
                       className="object-cover"
                       sizes="150px"
                     />
