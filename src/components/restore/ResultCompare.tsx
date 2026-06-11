@@ -115,7 +115,7 @@ export function ResultCompare({
           <div className="flex-1 py-2 text-center text-xs text-muted-foreground border-r">
             Antes
           </div>
-          <div className="flex-1 py-2 text-center text-xs font-medium text-brand-dark">
+          <div className="flex-1 py-2 text-center text-xs font-medium text-brand-text">
             Depois ✦
           </div>
         </div>

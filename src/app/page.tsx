@@ -55,7 +55,7 @@ export default async function HomePage() {
         <section id="precos" className="py-16 sm:py-20 bg-muted/30">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-1.5 text-brand-dark mb-3">
+              <div className="inline-flex items-center gap-1.5 text-brand-text mb-3">
                 <Sparkles className="h-4 w-4" />
                 <span className="text-sm font-medium">Sem assinatura</span>
               </div>

@@ -52,6 +52,7 @@
   --color-brand-dark: var(--brand-dark);
   --color-brand-muted: var(--brand-muted);
   --color-brand-foreground: var(--brand-foreground);
+  --color-brand-text: var(--brand-text);
 }
 
 :root {
@@ -60,6 +61,7 @@
   --brand-dark: #1d4ed8;      /* deeper blue — hover state, ≥4.5:1 with white text */
   --brand-muted: #64748b;     /* slate gray — UI chrome */
   --brand-foreground: #0f172a;/* dark text on brand bg */
+  --brand-text: #1d4ed8;      /* text-on-page-background variant, ≥4.5:1 on light bg */
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -96,6 +98,7 @@
 }
 
 .dark {
+  --brand-text: #93c5fd;       /* lighter pastel blue, ≥4.5:1 on dark bg (#0a0a0a/#121212) */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

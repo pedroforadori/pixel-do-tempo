@@ -13,8 +13,8 @@ export function Footer() {
           {/* Marca */}
           <div className="flex flex-col gap-3">
             <Link href="/#inicio" className="inline-flex items-center gap-2.5">
-              <Image src="/logo-light.png" alt="" width={240} height={417} unoptimized className="h-8 w-auto dark:hidden" />
-              <Image src="/logo-dark.png" alt="" width={122} height={205} unoptimized className="h-8 w-auto hidden dark:block" />
+              <Image src="/logo-light.png" alt="" width={81} height={140} unoptimized className="h-8 w-auto dark:hidden" />
+              <Image src="/logo-dark.png" alt="" width={83} height={140} unoptimized className="h-8 w-auto hidden dark:block" />
               <div className="flex flex-col leading-tight">
                 <span className="font-semibold text-sm text-foreground">Pixel do Tempo</span>
                 <span className="text-[10px] text-muted-foreground">Revivendo momentos com IA</span>
