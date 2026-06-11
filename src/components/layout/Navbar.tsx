@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LayoutDashboard, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
@@ -37,10 +38,8 @@ export async function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/#inicio" className="flex items-center gap-2.5">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-light.png" alt="" className="h-9 w-auto dark:hidden" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-dark.png" alt="" className="h-9 w-auto hidden dark:block" />
+          <Image src="/logo-light.png" alt="" width={81} height={140} priority unoptimized className="h-9 w-auto dark:hidden" />
+          <Image src="/logo-dark.png" alt="" width={83} height={140} priority unoptimized className="h-9 w-auto hidden dark:block" />
           <div className="flex flex-col leading-tight">
             <span className="font-semibold text-sm text-foreground">Pixel do Tempo</span>
             <span className="text-[10px] text-muted-foreground hidden sm:block">Revivendo momentos com IA</span>
@@ -77,10 +76,13 @@ export async function Navbar() {
               )}
 
               <DropdownMenu>
-                <DropdownMenuTrigger className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                <DropdownMenuTrigger
+                  aria-label={`Menu do usuário (${initials})`}
+                  className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
                   <Avatar className="h-8 w-8 cursor-pointer">
                     <AvatarImage src={user.user_metadata?.avatar_url} />
-                    <AvatarFallback className="text-xs bg-slate-200">
+                    <AvatarFallback className="text-xs bg-slate-200 text-slate-700">
                       {initials}
                     </AvatarFallback>
                   </Avatar>

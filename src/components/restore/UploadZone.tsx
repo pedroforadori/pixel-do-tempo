@@ -63,7 +63,7 @@ export function UploadZone({ onFiles, onReject, disabled }: UploadZoneProps) {
         disabled && "opacity-50 cursor-not-allowed pointer-events-none"
       )}
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps()} aria-label="Selecionar foto para restaurar" />
 
       <div
         className={cn(
@@ -83,7 +83,7 @@ export function UploadZone({ onFiles, onReject, disabled }: UploadZoneProps) {
           {isDragActive ? "Solte as fotos aqui" : "Arraste fotos aqui"}
         </p>
         <p className="text-sm text-muted-foreground mt-1">
-          ou <span className="text-brand-dark font-medium">clique para selecionar</span>
+          ou <span className="text-brand-text font-medium">clique para selecionar</span>
         </p>
         <p className="text-xs text-muted-foreground mt-2">
           JPG, PNG ou WebP · até 10 fotos · de 10 KB a 30 MB cada

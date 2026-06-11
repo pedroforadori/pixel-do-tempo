@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useUpload } from "@/hooks/useUpload";
 import { UploadZone } from "@/components/restore/UploadZone";
 import { ProcessingState } from "@/components/restore/ProcessingState";
@@ -12,9 +13,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const DEMOS = [
-  { originalUrl: "/demo/original.jpg",   restoredUrl: "/demo/restaurada.jpg" },
-  { originalUrl: "/demo/original_1.jpg", restoredUrl: "/demo/restaurada_1.jpg" },
-  { originalUrl: "/demo/original_2.jpg", restoredUrl: "/demo/restaurada_2.jpg" },
+  { originalUrl: "/demo/original.webp",   restoredUrl: "/demo/restaurada.webp" },
+  { originalUrl: "/demo/original_1.webp", restoredUrl: "/demo/restaurada_1.webp" },
+  { originalUrl: "/demo/original_2.webp", restoredUrl: "/demo/restaurada_2.webp" },
 ];
 
 function DemoCarousel() {
@@ -49,8 +50,7 @@ function DemoCarousel() {
             )}
             aria-label={`Exemplo ${i + 1}`}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={demo.originalUrl} alt="" className="h-full w-full object-cover" />
+            <Image src={demo.originalUrl} alt="" fill sizes="56px" unoptimized className="object-cover" />
           </button>
         ))}
       </div>
@@ -64,17 +64,21 @@ function DemoCarousel() {
         >
           <ChevronLeft className="h-3.5 w-3.5 text-muted-foreground" />
         </button>
-        <div className="flex gap-1.5">
+        <div className="flex">
           {DEMOS.map((_, i) => (
             <button
               key={i}
               onClick={() => go(i)}
-              className={cn(
-                "h-1.5 rounded-full transition-all",
-                i === active ? "w-4 bg-brand-dark" : "w-1.5 bg-muted-foreground/30"
-              )}
+              className="flex h-6 w-6 items-center justify-center"
               aria-label={`Exemplo ${i + 1}`}
-            />
+            >
+              <span
+                className={cn(
+                  "h-1.5 rounded-full transition-all",
+                  i === active ? "w-4 bg-brand-dark" : "w-1.5 bg-muted-foreground/30"
+                )}
+              />
+            </button>
           ))}
         </div>
         <button
