@@ -42,7 +42,7 @@ export function SignUpForm() {
       return;
     }
 
-    toast.success("Conta criada! Verifique seu e-mail para confirmar.");
+    toast.success("Conta criada!");
     router.push("/auth/login");
   }
 
