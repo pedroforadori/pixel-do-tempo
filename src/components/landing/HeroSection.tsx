@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <Badge
           variant="secondary"
-          className="mb-5 gap-1.5 border border-blue-100 bg-blue-50 text-brand-dark"
+          className="mb-5 gap-1.5 border border-blue-100 bg-blue-50 text-blue-800"
         >
           <Sparkles className="h-3 w-3" />
           Powered by GFPGAN v1.4

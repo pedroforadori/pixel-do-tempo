@@ -57,7 +57,7 @@
 :root {
   /* ── Pixel do Tempo brand colors ── */
   --brand: #93c5fd;           /* pastel blue — primary CTA */
-  --brand-dark: #3b82f6;      /* deeper blue — hover state */
+  --brand-dark: #1d4ed8;      /* deeper blue — hover state, ≥4.5:1 with white text */
   --brand-muted: #64748b;     /* slate gray — UI chrome */
   --brand-foreground: #0f172a;/* dark text on brand bg */
 

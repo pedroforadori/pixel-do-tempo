@@ -63,7 +63,7 @@ export function UploadZone({ onFiles, onReject, disabled }: UploadZoneProps) {
         disabled && "opacity-50 cursor-not-allowed pointer-events-none"
       )}
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps()} aria-label="Selecionar foto para restaurar" />
 
       <div
         className={cn(

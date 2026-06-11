@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, Globe } from "lucide-react";
 
@@ -12,10 +13,8 @@ export function Footer() {
           {/* Marca */}
           <div className="flex flex-col gap-3">
             <Link href="/#inicio" className="inline-flex items-center gap-2.5">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-light.png" alt="" className="h-8 w-auto dark:hidden" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-dark.png" alt="" className="h-8 w-auto hidden dark:block" />
+              <Image src="/logo-light.png" alt="" width={240} height={417} unoptimized className="h-8 w-auto dark:hidden" />
+              <Image src="/logo-dark.png" alt="" width={122} height={205} unoptimized className="h-8 w-auto hidden dark:block" />
               <div className="flex flex-col leading-tight">
                 <span className="font-semibold text-sm text-foreground">Pixel do Tempo</span>
                 <span className="text-[10px] text-muted-foreground">Revivendo momentos com IA</span>
@@ -51,11 +50,11 @@ export function Footer() {
               <Mail className="h-3.5 w-3.5" />
               pedroforadori@gmail.com
             </a>
-            <span className="inline-flex items-center gap-1.5 text-muted-foreground cursor-not-allowed opacity-60 text-xs">
+            <span className="inline-flex items-center gap-1.5 text-muted-foreground cursor-not-allowed text-xs">
               <Globe className="h-3.5 w-3.5" />
               Instagram (em breve)
             </span>
-            <span className="inline-flex items-center gap-1.5 text-muted-foreground cursor-not-allowed opacity-60 text-xs">
+            <span className="inline-flex items-center gap-1.5 text-muted-foreground cursor-not-allowed text-xs">
               <Globe className="h-3.5 w-3.5" />
               Facebook (em breve)
             </span>
