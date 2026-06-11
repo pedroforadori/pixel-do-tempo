@@ -119,14 +119,6 @@ export async function Navbar() {
               >
                 Entrar
               </Button>
-              <Button
-                size="sm"
-                nativeButton={false}
-                className="bg-brand-dark hover:bg-brand-dark/90 text-white"
-                render={<Link href="/auth/signup" />}
-              >
-                Começar grátis
-              </Button>
             </>
           )}
         </div>
